@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL-Roomey Course - TOEFL, IELTS & Persiapan Soal Terbaik</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Tingkatkan kemampuan bahasa Inggris Anda bersama EL-Roomey Course. Program persiapan TOEFL, IELTS, dan latihan soal intensif dengan tutor berpengalaman.">
+    <meta name="keywords" content="elroomeny course, kursus toefl kediri, kursus ielts malang, latihan soal toefl, persiapan ielts surabaya, belajar bahasa inggris premium, ielts path">
+    <meta name="author" content="EL-Roomey Course">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="EL-Roomey Course - TOEFL • IELTS • SOAL">
+    <meta property="og:description" content="Raih skor impian TOEFL dan IELTS Anda dengan sistem pembelajaran intensif dan fleksibel. Daftar sekarang secara instan via WhatsApp.">
+    <meta property="og:image" content="assets/hero-bg.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/Elroomey.jpg">
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheets (elroomey original) -->
+    <link rel="stylesheet" href="style.css?v=20260602">
+
+    <!-- ==================== IELTS SECTION STYLES ==================== -->
+    <style>
+        /* ---- IELTS Banner Section ---- */
+        #ielts {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #17182B 0%, #1E2040 50%, #17182B 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        #ielts::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 70% 30%, rgba(109, 74, 255, 0.18) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(109, 74, 255, 0.08) 0%, transparent 60%);
+        }
+        #ielts::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(109,74,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(109,74,255,0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        .ielts-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 5vw;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .ielts-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .ielts-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 100px;
+            background: rgba(109, 74, 255, 0.15);
+            border: 1px solid rgba(109, 74, 255, 0.35);
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #A78BFF;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+        .ielts-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22C55E;
+            animation: ielts-pulse 2s ease-in-out infinite;
+        }
+        @keyframes ielts-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.4); }
+        }
+        .ielts-header h2 {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+        .ielts-header h2 .ielts-grad {
+            background: linear-gradient(135deg, #A78BFF, #6D4AFF, #C4B5FD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .ielts-header p {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.62);
+            line-height: 1.75;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* ---- MAIN CTA CARD ---- */
+        .ielts-main-card {
+            background: rgba(30, 32, 64, 0.9);
+            border: 1px solid rgba(109, 74, 255, 0.3);
+            border-radius: 24px;
+            padding: 56px 52px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 40px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 64px rgba(109, 74, 255, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        .ielts-main-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(109,74,255,0.07), transparent);
+            pointer-events: none;
+        }
+
+        .ielts-card-left h3 {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .ielts-card-left p {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .ielts-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .ielts-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+        }
+        .ielts-features-list li i {
+            color: #A78BFF;
+            width: 18px;
+            flex-shrink: 0;
+        }
+
+        .ielts-cta-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* CTA Buttons – IELTS style */
+        .btn-ielts-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: none;
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6D4AFF, #A78BFF);
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 28px rgba(109,74,255,0.4);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+        .btn-ielts-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(109,74,255,0.55);
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn-ielts-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(109,74,255,0.4);
+            background: transparent;
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+            cursor: pointer;
+            text-decoration: none;
+            transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+        }
+        .btn-ielts-secondary:hover {
+            border-color: #A78BFF;
+            background: rgba(109,74,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        /* ---- VISUAL SIDE ---- */
+        .ielts-card-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .ielts-stat-card {
+            background: rgba(23, 24, 43, 0.85);
+            border: 1px solid rgba(109,74,255,0.2);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            backdrop-filter: blur(8px);
+            transition: border-color 0.22s ease, transform 0.22s ease;
+        }
+        .ielts-stat-card:hover {
+            border-color: rgba(109,74,255,0.45);
+            transform: translateX(6px);
+        }
+        .ielts-stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, rgba(109,74,255,0.25), rgba(167,139,255,0.1));
+            border: 1px solid rgba(109,74,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .ielts-stat-body {}
+        .ielts-stat-val {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 3px;
+        }
+        .ielts-stat-label {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .ielts-stat-tag {
+            margin-left: auto;
+            padding: 3px 10px;
+            border-radius: 100px;
+            background: rgba(109,74,255,0.15);
+            border: 1px solid rgba(109,74,255,0.25);
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #A78BFF;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* ---- MINI FEATURE CARDS ---- */
+        .ielts-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 0;
+        }
+        .ielts-mini-card {
+            background: rgba(30,32,64,0.85);
+            border: 1px solid rgba(109,74,255,0.15);
+            border-radius: 16px;
+            padding: 22px 18px;
+            text-align: center;
+            transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+        .ielts-mini-card:hover {
+            border-color: rgba(109,74,255,0.45);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 28px rgba(109,74,255,0.15);
+            text-decoration: none;
+        }
+        .ielts-mini-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .ielts-mini-card-title {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .ielts-mini-card-desc {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.73rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+        .ielts-mini-card-free {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 2px 8px;
+            border-radius: 100px;
+            background: rgba(34,197,94,0.15);
+            border: 1px solid rgba(34,197,94,0.3);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #22C55E;
+        }
+
+        /* ---- NOTE BOX ---- */
+        .ielts-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            background: rgba(109,74,255,0.07);
+            border: 1px solid rgba(109,74,255,0.18);
+            margin-top: 40px;
+        }
+        .ielts-note i {
+            color: #A78BFF;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .ielts-note p {
+            font-family: 'Inter', 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 900px) {
+            .ielts-main-card {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                padding: 36px 28px;
+            }
+            .ielts-mini-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            #ielts { padding: 70px 0; }
+            .ielts-main-card { padding: 28px 20px; }
+            .ielts-mini-grid { grid-template-columns: 1fr; }
+            .ielts-cta-btns { flex-direction: column; }
+            .btn-ielts-primary, .btn-ielts-secondary { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR (asli dari elroomey) -->
+    <header class="navbar-header" id="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="nav-logo" id="navLogo">
+                <span class="logo-accent">English</span> <span class="logo-light">Tips</span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html#beranda" class="nav-link">Beranda</a></li>
+                    <li><a href="index.html#layanan" class="nav-link">Layanan</a></li>
+                    <li><a href="index.html#armada" class="nav-link">Armada</a></li>
+                    <li><a href="index.html#keunggulan" class="nav-link">Keunggulan</a></li>
+                    <li><a href="index.html#testimoni" class="nav-link">Testimoni</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="Kursus.html" class="nav-link active">Kursus</a></li>
+                    <li><a href="#daftar" class="btn-booking-nav">Daftar Sekarang</a></li>
+                </ul>
+            </nav>
+
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (asli dari elroomey) -->
+    <section class="hero-section" id="beranda" style="background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.95)), url('assets/hero-bg.png');">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h2 class="hero-tagline reveal-item">TOEFL IELTS Preparation</h2>
+                <h1 class="hero-title reveal-item">English Tips</h1>
+                <p class="hero-subtitle reveal-item">Bimbingan belajar bahasa Inggris terpercaya yang berfokus pada persiapan TOEFL, IELTS, dan pendalaman materi soal dengan bimbingan terarah, fleksibel dan tutor berpengalaman.</p>
+                <div class="hero-buttons reveal-item">
+                    <a href="toefl-practice.html" class="btn btn-gold btn-glow">TOEFL <i class="fas fa-graduation-cap"></i></a>
+                    <a href="#ielts" class="btn btn-outline">IELTS <i class="fas fa-book-open"></i></a>
+                    <a href="https://wa.me/6281515528098?text=Halo%20El-Roomey%20Course,%20saya%20ingin%20konsultasi%20mengenai%20latihan%20soal/materi%20persiapan%20ujian." target="_blank" class="btn btn-whatsapp-consult">Chat Admin <i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <!-- Quick Search Card (asli) -->
+            <div class="hero-quick-card reveal-item">
+                <div class="quick-card-title">
+                    <i class="fas fa-search text-gold"></i>
+                    <span>Cari program</span>
+                </div>
+                <div class="quick-card-grid">
+                    <div class="quick-field">
+                        <label for="quickProgram">Program Kursus</label>
+                        <select id="quickProgram" class="quick-input">
+                            <option value="toefl">TOEFL Preparation</option>
+                            <option value="ielts">IELTS Preparation</option>
+                            <option value="speaking">Speaking Practice</option>
+                        </select>
+                    </div>
+                    <div class="quick-field">
+                        <label for="quickMethod">Tes Prediksi</label>
+                        <select id="quickMethod" class="quick-input">
+                            <option value="toefl-pred">TOEFL Prediction 1-20</option>
+                            <option value="ielts-pred">IELTS Prediction 1-20</option>
+                            <option value="speaking-pred">Speaking Practice</option>
+                        </select>
+                    </div>
+                    <button type="button" id="quickSearchBtn" class="btn btn-gold quick-btn">
+                        <span>Daftar Program</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= IELTS SECTION ========================= -->
+    <section id="ielts">
+        <div class="ielts-container">
+
+            <!-- Section Header -->
+            <div class="ielts-header">
+                <div class="ielts-badge">
+                    <div class="ielts-badge-dot"></div>
+                    Platform IELTS Resmi EL-Roomey
+                </div>
+                <h2>Raih Target <span class="ielts-grad">IELTS Band Score</span><br>Kamu Bersama Kami</h2>
+                <p>Dari Diagnostic Test gratis hingga program intensif Writing & Speaking dengan tutor berpengalaman – semua tersedia dalam satu platform terstruktur.</p>
+            </div>
+
+            <!-- Main CTA Card -->
+            <div class="ielts-main-card">
+                <!-- LEFT: Info & CTA -->
+                <div class="ielts-card-left">
+                    <h3>🎯 IELTS Path<br>– Platform Latihan IELTS</h3>
+                    <p>Mulai dengan Diagnostic Test gratis untuk mengetahui level awal Listening dan Reading kamu. Dapatkan estimasi band score dan rekomendasi belajar yang personal.</p>
+
+                    <ul class="ielts-features-list">
+                        <li><i class="fas fa-check-circle"></i> Diagnostic Test Listening & Reading – <strong>Gratis</strong></li>
+                        <li><i class="fas fa-check-circle"></i> 10 soal Listening + 10 soal Reading</li>
+                        <li><i class="fas fa-check-circle"></i> Timer, navigasi soal, dan review jawaban</li>
+                        <li><i class="fas fa-check-circle"></i> Estimasi band score langsung setelah tes</li>
+                        <li><i class="fas fa-check-circle"></i> Rekomendasi belajar personal</li>
+                        <li><i class="fas fa-star"></i> Writing & Speaking feedback dari tutor (berbayar)</li>
+                    </ul>
+
+                    <div class="ielts-cta-btns">
+                        <a href="ielts-path-home.html" class="btn-ielts-primary" id="btn-ielts-enter">
+                            <i class="fas fa-rocket"></i> Masuk ke IELTS Path
+                        </a>
+                        <a href="ielts-diagnostic.html" class="btn-ielts-secondary">
+                            <i class="fas fa-play-circle"></i> Diagnostic Test Gratis
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Stats -->
+                <div class="ielts-card-right">
+                    <div class="ielts-stat-card">
+                        <div class="ielts-stat-icon">🎧</div>
+                        <div class="ielts-stat-body">
+                            <div class="ielts-stat-val">Listening</div>
+                            <div class="ielts-stat-label">10 soal bertipe skenario IELTS nyata</div>
+                        </div>
+                        <div class="ielts-stat-tag">Gratis</div>
+                    </div>
+                    <div class="ielts-stat-card">
+                        <div class="ielts-stat-icon">📖</div>
+                        <div class="ielts-stat-body">
+                            <div class="ielts-stat-val">Reading</div>
+                            <div class="ielts-stat-label">Passage akademik + soal True/False/NG</div>
+                        </div>
+                        <div class="ielts-stat-tag">Gratis</div>
+                    </div>
+                    <div class="ielts-stat-card">
+                        <div class="ielts-stat-icon">✍️</div>
+                        <div class="ielts-stat-body">
+                            <div class="ielts-stat-val">Writing Feedback</div>
+                            <div class="ielts-stat-label">Task 1 & 2 dinilai oleh tutor manusia</div>
+                        </div>
+                        <div class="ielts-stat-tag">Pro Plan</div>
+                    </div>
+                    <div class="ielts-stat-card">
+                        <div class="ielts-stat-icon">🗣️</div>
+                        <div class="ielts-stat-body">
+                            <div class="ielts-stat-val">Speaking 1-on-1</div>
+                            <div class="ielts-stat-label">Mock test Part 1, 2, 3 dengan tutor</div>
+                        </div>
+                        <div class="ielts-stat-tag">Pro Plan</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini Feature Cards -->
+            <div class="ielts-mini-grid">
+                <a href="ielts-diagnostic.html" class="ielts-mini-card">
+                    <span class="ielts-mini-card-icon">🎯</span>
+                    <div class="ielts-mini-card-title">Diagnostic Test</div>
+                    <div class="ielts-mini-card-desc">Kenali level awal kamu sebelum berlatih</div>
+                    <span class="ielts-mini-card-free">GRATIS</span>
+                </a>
+                <a href="ielts-program.html" class="ielts-mini-card">
+                    <span class="ielts-mini-card-icon">📚</span>
+                    <div class="ielts-mini-card-title">Program Lengkap</div>
+                    <div class="ielts-mini-card-desc">Semua skill IELTS dalam satu platform</div>
+                </a>
+                <a href="ielts-pricing.html" class="ielts-mini-card">
+                    <span class="ielts-mini-card-icon">💎</span>
+                    <div class="ielts-mini-card-title">Pricing & Membership</div>
+                    <div class="ielts-mini-card-desc">Mulai dari Rp 0 – upgrade kapan saja</div>
+                </a>
+            </div>
+
+            <!-- Note -->
+            <div class="ielts-note">
+                <i class="fas fa-info-circle"></i>
+                <p><strong>Catatan:</strong> Diagnostic Test Listening dan Reading sepenuhnya gratis tanpa pendaftaran. Estimasi band score yang ditampilkan adalah perkiraan berdasarkan persentase jawaban benar, bukan skor IELTS resmi. Skor resmi hanya diperoleh melalui tes di British Council atau IDP.</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- ========================= /IELTS SECTION ========================= -->
+
+    <!-- SCRIPT (asli elroomey + quick card fix) -->
+    <script>
+        // ---- Hamburger menu (asli elroomey) ----
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        if (hamburgerBtn && navMenu) {
+            hamburgerBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburgerBtn.classList.toggle('active');
+            });
+        }
+
+        // ---- Navbar scroll effect (asli elroomey) ----
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        }
+
+        // ---- Quick Search: arahkan ke halaman yang sesuai ----
+        const quickSearchBtn = document.getElementById('quickSearchBtn');
+        if (quickSearchBtn) {
+            quickSearchBtn.addEventListener('click', () => {
+                const program = document.getElementById('quickProgram').value;
+                if (program === 'ielts') {
+                    window.location.href = 'ielts-diagnostic.html';
+                } else if (program === 'toefl') {
+                    window.location.href = 'toefl-practice.html';
+                } else {
+                    window.location.href = 'https://wa.me/6281515528098?text=Halo%20El-Roomey%20Course,%20saya%20ingin%20mendaftar%20program%20Speaking%20Practice.';
+                }
+            });
+        }
+
+        // ---- Smooth scroll untuk anchor link ----
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ---- Reveal on scroll (compat dengan elroomey) ----
+        const revealItems = document.querySelectorAll('.reveal-item');
+        if (revealItems.length) {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealItems.forEach(item => revealObserver.observe(item));
+        }
+    </script>
+
+</body>
+</html>

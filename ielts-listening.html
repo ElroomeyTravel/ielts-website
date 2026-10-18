@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Listening Test – IELTS Path</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #6D4AFF;
+      --purple-light: #A78BFF;
+      --purple-dark: #4F2ECC;
+      --navy: #17182B;
+      --navy-2: #1E2040;
+      --navy-3: #252747;
+      --white: #FFFFFF;
+      --gray-400: #9090A8;
+      --gray-600: #5A5A78;
+      --success: #22C55E;
+      --danger: #EF4444;
+      --warning: #F59E0B;
+      --font: 'Inter', sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --topbar-h: 58px;
+      --left-w: 264px;
+      --right-w: 264px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--navy);
+      color: var(--white);
+      height: 100vh;
+      overflow: hidden;
+    }
+    button { cursor: pointer; font-family: var(--font); }
+    input, textarea, select { font-family: var(--font); }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(109,74,255,0.35); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(109,74,255,0.6); }
+
+    /* ============================================================
+       TOP BAR
+    ============================================================ */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: var(--topbar-h);
+      background: rgba(23,24,43,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(109,74,255,0.15);
+      display: flex; align-items: center;
+      padding: 0 16px; gap: 12px;
+    }
+    .topbar-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 800; font-size: 0.9rem; text-decoration: none; color: inherit;
+      flex-shrink: 0;
+    }
+    .topbar-logo-icon {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 900;
+    }
+    .topbar-logo span { color: var(--purple-light); }
+    .topbar-badge {
+      padding: 3px 10px; border-radius: 100px;
+      background: rgba(109,74,255,0.15); border: 1px solid rgba(109,74,255,0.3);
+      font-size: 0.7rem; font-weight: 700; color: var(--purple-light);
+      flex-shrink: 0;
+    }
+    .topbar-center {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .topbar-progress-wrap {
+      flex: 1; max-width: 320px;
+    }
+    .topbar-progress-bar {
+      background: rgba(109,74,255,0.15); border-radius: 100px; height: 5px; overflow: hidden;
+    }
+    .topbar-progress-fill {
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      transition: width 0.4s ease;
+    }
+    .topbar-progress-label { font-size: 0.65rem; color: var(--gray-400); margin-top: 4px; text-align: center; }
+    .topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .topbar-btn-mobile {
+      display: none;
+      padding: 6px 10px; border-radius: 7px; border: 1px solid rgba(109,74,255,0.25);
+      background: transparent; color: rgba(255,255,255,0.7); font-size: 0.8rem; font-weight: 600;
+    }
+
+    /* ============================================================
+       EXAM LAYOUT — THREE COLUMNS
+    ============================================================ */
+    .exam-layout {
+      display: grid;
+      grid-template-columns: var(--left-w) 1fr var(--right-w);
+      height: 100vh;
+      padding-top: var(--topbar-h);
+    }
+
+    /* ============================================================
+       LEFT SIDEBAR
+    ============================================================ */
+    .sidebar-left {
+      background: var(--navy-2);
+      border-right: 1px solid rgba(109,74,255,0.12);
+      height: calc(100vh - var(--topbar-h));
+      overflow-y: auto;
+      padding: 20px 16px;
+      display: flex; flex-direction: column; gap: 20px;
+      position: sticky; top: var(--topbar-h);
+    }
+
+    /* Section label */
+    .sidebar-label {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--gray-400);
+      padding-bottom: 8px; border-bottom: 1px solid rgba(109,74,255,0.1);
+    }
+
+    /* Instructions card */
+    .instr-card {
+      background: rgba(109,74,255,0.07); border: 1px solid rgba(109,74,255,0.15);
+      border-radius: var(--radius-sm); padding: 14px;
+    }
+    .instr-title {
+      font-size: 0.8rem; font-weight: 700; color: var(--white);
+      margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .instr-meta { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+    .instr-meta-row {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; color: rgba(255,255,255,0.55);
+    }
+    .instr-meta-row strong { color: rgba(255,255,255,0.8); }
+    .instr-rules { font-size: 0.7rem; line-height: 1.65; color: rgba(255,255,255,0.5); }
+
+    /* Audio player */
+    .audio-player-card {
+      background: var(--navy-3); border: 1px solid rgba(109,74,255,0.2);
+      border-radius: var(--radius-sm); padding: 14px; overflow: hidden;
+    }
+    .audio-section-name {
+      font-size: 0.72rem; font-weight: 700; color: var(--purple-light);
+      margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+    }
+    .audio-section-name .audio-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--success);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+    /* Custom audio controls */
+    .audio-controls {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .audio-play-btn {
+      width: 36px; height: 36px; border-radius: 50%; border: none; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
+      color: var(--white); font-size: 0.85rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 14px rgba(109,74,255,0.35);
+    }
+    .audio-play-btn:hover { transform: scale(1.07); box-shadow: 0 6px 20px rgba(109,74,255,0.5); }
+    .audio-play-btn:active { transform: scale(0.96); }
+    .audio-time { font-size: 0.68rem; font-variant-numeric: tabular-nums; color: var(--gray-400); flex-shrink: 0; }
+
+    .audio-progress-wrap {
+      flex: 1; cursor: pointer; padding: 6px 0;
+    }
+    .audio-progress-bg {
+      height: 4px; border-radius: 2px; background: rgba(255,255,255,0.1); overflow: hidden; position: relative;
+    }
+    .audio-progress-fill {
+      height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      transition: width 0.3s linear; pointer-events: none;
+    }
+
+    .audio-volume-row { display: flex; align-items: center; gap: 8px; }
+    .audio-vol-icon { font-size: 0.75rem; color: var(--gray-400); flex-shrink: 0; }
+    .audio-vol-slider {
+      flex: 1; -webkit-appearance: none; appearance: none;
+      height: 3px; border-radius: 2px;
+      background: linear-gradient(to right, var(--purple) 70%, rgba(255,255,255,0.15) 70%);
+      outline: none; cursor: pointer;
+    }
+    .audio-vol-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--purple-light); cursor: pointer;
+    }
+    .audio-note {
+      margin-top: 8px; font-size: 0.65rem; color: rgba(245,158,11,0.7);
+      line-height: 1.5;
+    }
+
+    /* Hidden native audio element */
+    audio { display: none; }
+
+    /* Section Navigation */
+    .section-nav { display: flex; flex-direction: column; gap: 6px; }
+    .section-nav-item {
+      border-radius: var(--radius-sm);
+      border: 1.5px solid rgba(109,74,255,0.12);
+      background: rgba(37,39,71,0.35);
+      overflow: hidden; transition: border-color var(--transition);
+      cursor: pointer;
+    }
+    .section-nav-item:hover { border-color: rgba(109,74,255,0.35); }
+    .section-nav-item.active {
+      border-color: var(--purple);
+      background: rgba(109,74,255,0.1);
+    }
+    .section-nav-item.completed { border-color: rgba(34,197,94,0.3); }
+    .section-nav-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px;
+    }
+    .section-nav-icon {
+      width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0;
+      background: rgba(109,74,255,0.15); border: 1px solid rgba(109,74,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 800; color: var(--purple-light);
+    }
+    .section-nav-item.active .section-nav-icon {
+      background: rgba(109,74,255,0.3); border-color: rgba(109,74,255,0.5);
+    }
+    .section-nav-item.completed .section-nav-icon {
+      background: rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.35); color: var(--success);
+    }
+    .section-nav-info { flex: 1; min-width: 0; }
+    .section-nav-name {
+      font-size: 0.75rem; font-weight: 700; color: var(--white);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .section-nav-range {
+      font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 1px;
+    }
+    .section-play-btn {
+      width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(109,74,255,0.3);
+      background: rgba(109,74,255,0.12); color: var(--purple-light);
+      font-size: 0.65rem; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition);
+    }
+    .section-play-btn:hover { background: rgba(109,74,255,0.25); border-color: var(--purple); }
+    .section-play-btn.playing { background: var(--purple); border-color: var(--purple); color: var(--white); }
+    .section-nav-progress {
+      height: 3px; background: rgba(109,74,255,0.08);
+    }
+    .section-nav-progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--success), rgba(34,197,94,0.6));
+      transition: width 0.4s ease;
+    }
+
+    /* ============================================================
+       CENTER — QUESTIONS PANEL
+    ============================================================ */
+    .center-panel {
+      height: calc(100vh - var(--topbar-h));
+      overflow-y: auto;
+      padding: 28px 32px 60px;
+      background: var(--navy);
+    }
+
+    /* Section group header */
+    .section-group { margin-bottom: 8px; }
+    .section-group-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 18px 0 14px; position: sticky; top: 0;
+      background: var(--navy); z-index: 10;
+    }
+    .section-group-badge {
+      padding: 4px 14px; border-radius: 100px;
+      background: rgba(109,74,255,0.15); border: 1px solid rgba(109,74,255,0.3);
+      font-size: 0.7rem; font-weight: 700; color: var(--purple-light); flex-shrink: 0;
+    }
+    .section-group-title { font-size: 1rem; font-weight: 800; color: var(--white); }
+    .section-group-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .section-group-divider {
+      height: 1px; background: rgba(109,74,255,0.12);
+      margin: 28px 0 32px;
+      position: relative;
+    }
+    .section-group-divider::before {
+      content: '';
+      position: absolute; top: -1px; left: 0;
+      width: 64px; height: 3px;
+      background: linear-gradient(90deg, var(--purple), transparent);
+      border-radius: 2px;
+    }
+
+    /* Question card */
+    .question-card {
+      background: var(--navy-2); border: 1px solid rgba(109,74,255,0.13);
+      border-radius: var(--radius); padding: 24px 28px; margin-bottom: 16px;
+      transition: border-color var(--transition);
+      scroll-margin-top: 56px;
+    }
+    .question-card:hover { border-color: rgba(109,74,255,0.25); }
+    .question-card.answered { border-color: rgba(34,197,94,0.2); }
+    .question-card.current { border-color: rgba(109,74,255,0.5); box-shadow: 0 0 0 2px rgba(109,74,255,0.08); }
+
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .q-num-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(109,74,255,0.15); border: 1px solid rgba(109,74,255,0.3);
+      font-size: 0.7rem; font-weight: 800; color: var(--purple-light);
+    }
+    .question-card.answered .q-num-badge {
+      background: rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.4); color: var(--success);
+    }
+    .q-type-tag {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.3); padding: 2px 7px;
+      border-radius: 4px; background: rgba(255,255,255,0.05);
+    }
+    .q-answered-indicator {
+      margin-left: auto; font-size: 0.65rem; font-weight: 600; color: var(--success);
+      display: none;
+    }
+    .question-card.answered .q-answered-indicator { display: flex; align-items: center; gap: 4px; }
+
+    .q-context {
+      font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.65;
+      padding: 10px 14px; border-radius: 8px;
+      background: rgba(37,39,71,0.5); border-left: 2px solid rgba(109,74,255,0.35);
+      margin-bottom: 14px; font-style: italic;
+    }
+    .q-text {
+      font-size: 0.92rem; font-weight: 600; line-height: 1.6; margin-bottom: 18px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    /* Options */
+    .options { display: flex; flex-direction: column; gap: 8px; }
+    .opt-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 11px 14px; border-radius: 9px;
+      border: 1.5px solid rgba(109,74,255,0.12);
+      background: rgba(37,39,71,0.35);
+      cursor: pointer; transition: all var(--transition);
+    }
+    .opt-item:hover { border-color: rgba(109,74,255,0.38); background: rgba(109,74,255,0.07); }
+    .opt-item.selected { border-color: var(--purple); background: rgba(109,74,255,0.16); }
+    .opt-item input[type="radio"] { display: none; }
+    .opt-letter {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      border: 1.5px solid rgba(109,74,255,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; color: var(--gray-400);
+      transition: all var(--transition);
+    }
+    .opt-item.selected .opt-letter { background: var(--purple); border-color: var(--purple); color: var(--white); }
+    .opt-label { font-size: 0.85rem; line-height: 1.5; padding-top: 2px; }
+
+    /* Short answer */
+    .short-answer-wrap { margin-top: 4px; }
+    .short-answer-input {
+      width: 100%; padding: 12px 14px; border-radius: 9px;
+      border: 1.5px solid rgba(109,74,255,0.18);
+      background: rgba(37,39,71,0.5); color: var(--white);
+      font-size: 0.9rem; font-weight: 500; outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .short-answer-input:focus {
+      border-color: var(--purple); box-shadow: 0 0 0 3px rgba(109,74,255,0.12);
+    }
+    .short-answer-input::placeholder { color: rgba(255,255,255,0.25); }
+    .short-answer-hint { font-size: 0.7rem; color: var(--gray-400); margin-top: 6px; }
+
+    /* Form/note/sentence completion */
+    .completion-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .completion-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+    .completion-input {
+      min-width: 120px; padding: 8px 12px; border-radius: 7px;
+      border: 1.5px solid rgba(109,74,255,0.2);
+      background: rgba(37,39,71,0.5); color: var(--white);
+      font-size: 0.85rem; font-weight: 500; outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .completion-input:focus {
+      border-color: var(--purple); box-shadow: 0 0 0 2px rgba(109,74,255,0.12);
+    }
+    .completion-input::placeholder { color: rgba(255,255,255,0.2); }
+
+    /* Matching */
+    .matching-select {
+      padding: 10px 14px; border-radius: 9px;
+      border: 1.5px solid rgba(109,74,255,0.18);
+      background: rgba(37,39,71,0.6); color: var(--white);
+      font-size: 0.85rem; font-weight: 500; outline: none; cursor: pointer;
+      transition: border-color var(--transition);
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239090A8'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 32px;
+    }
+    .matching-select:focus { border-color: var(--purple); }
+    .matching-select option { background: var(--navy-3); }
+
+    /* Submit button area */
+    .center-submit-area {
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px 0 8px; gap: 12px;
+    }
+    .btn-finish {
+      padding: 14px 36px; border-radius: 12px; border: none;
+      font-size: 0.95rem; font-weight: 700;
+      background: linear-gradient(135deg, #22C55E, #16A34A);
+      color: var(--white); box-shadow: 0 6px 20px rgba(34,197,94,0.3);
+      transition: all var(--transition);
+    }
+    .btn-finish:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(34,197,94,0.45); }
+    .btn-skip {
+      padding: 14px 24px; border-radius: 12px;
+      border: 1.5px solid rgba(245,158,11,0.35); background: transparent;
+      color: var(--warning); font-size: 0.88rem; font-weight: 600;
+      transition: all var(--transition);
+    }
+    .btn-skip:hover { background: rgba(245,158,11,0.08); border-color: var(--warning); }
+
+    /* ============================================================
+       RIGHT SIDEBAR
+    ============================================================ */
+    .sidebar-right {
+      background: var(--navy-2);
+      border-left: 1px solid rgba(109,74,255,0.12);
+      height: calc(100vh - var(--topbar-h));
+      overflow-y: auto;
+      padding: 20px 14px;
+      display: flex; flex-direction: column; gap: 18px;
+      position: sticky; top: var(--topbar-h);
+    }
+
+    /* Timer */
+    .timer-card {
+      background: var(--navy-3); border: 1px solid rgba(109,74,255,0.2);
+      border-radius: var(--radius-sm); padding: 16px; text-align: center;
+    }
+    .timer-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gray-400); margin-bottom: 10px;
+    }
+    .timer-display {
+      font-size: 2.1rem; font-weight: 900; font-variant-numeric: tabular-nums;
+      letter-spacing: 2px; color: var(--white);
+      transition: color var(--transition);
+      line-height: 1;
+    }
+    .timer-display.warning { color: var(--warning); }
+    .timer-display.danger { color: var(--danger); animation: blink 1s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .timer-sub { font-size: 0.65rem; color: rgba(255,255,255,0.35); margin-top: 6px; }
+
+    /* Progress */
+    .progress-card {
+      background: var(--navy-3); border: 1px solid rgba(109,74,255,0.15);
+      border-radius: var(--radius-sm); padding: 14px;
+    }
+    .progress-card-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gray-400); margin-bottom: 12px;
+    }
+    .progress-stats { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .progress-stat-row {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .progress-stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+    .progress-stat-val { font-size: 0.8rem; font-weight: 700; color: var(--white); }
+    .progress-stat-val.green { color: var(--success); }
+    .progress-bar-bg {
+      height: 6px; border-radius: 3px; background: rgba(109,74,255,0.12); overflow: hidden;
+    }
+    .progress-bar-fill-animated {
+      height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, var(--success), rgba(34,197,94,0.7));
+      transition: width 0.4s ease;
+    }
+    .progress-pct { font-size: 0.62rem; color: var(--gray-400); text-align: right; margin-top: 4px; }
+
+    /* Question navigator */
+    .qnav-card {
+      background: var(--navy-3); border: 1px solid rgba(109,74,255,0.12);
+      border-radius: var(--radius-sm); padding: 14px; flex: 1;
+    }
+    .qnav-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gray-400); margin-bottom: 12px;
+    }
+    .qnav-section-label {
+      font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin: 10px 0 6px;
+    }
+    .qnav-section-label:first-of-type { margin-top: 0; }
+    .qnav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-bottom: 4px; }
+    .qnav-btn {
+      aspect-ratio: 1; border-radius: 6px; border: 1.5px solid rgba(109,74,255,0.18);
+      background: rgba(37,39,71,0.5); color: rgba(255,255,255,0.5);
+      font-size: 0.68rem; font-weight: 600;
+      transition: all var(--transition); cursor: pointer;
+    }
+    .qnav-btn:hover { border-color: var(--purple-light); color: var(--white); }
+    .qnav-btn.current {
+      border-color: var(--purple); background: rgba(109,74,255,0.3); color: var(--white);
+    }
+    .qnav-btn.answered {
+      background: rgba(34,197,94,0.13); border-color: rgba(34,197,94,0.38); color: var(--success);
+    }
+    .qnav-btn.answered.current {
+      border-color: var(--success); box-shadow: 0 0 0 2px rgba(34,197,94,0.22);
+    }
+    .qnav-legend { display: flex; flex-direction: column; gap: 5px; margin-top: 12px; }
+    .qnav-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.66rem; color: var(--gray-400); }
+    .qnav-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+    .qnav-dot.current { background: rgba(109,74,255,0.4); border: 1.5px solid var(--purple); }
+    .qnav-dot.answered { background: rgba(34,197,94,0.2); border: 1.5px solid rgba(34,197,94,0.4); }
+    .qnav-dot.unanswered { background: rgba(37,39,71,0.8); border: 1.5px solid rgba(109,74,255,0.2); }
+
+    /* Skill navigation */
+    .skill-nav-card {
+      background: rgba(109,74,255,0.06); border: 1px solid rgba(109,74,255,0.15);
+      border-radius: var(--radius-sm); padding: 14px;
+    }
+    .skill-nav-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gray-400); margin-bottom: 10px;
+    }
+    .skill-nav-btns { display: flex; flex-direction: column; gap: 7px; }
+    .skill-nav-btn {
+      width: 100%; padding: 10px 14px; border-radius: 8px; border: 1.5px solid rgba(109,74,255,0.2);
+      background: rgba(37,39,71,0.5); color: rgba(255,255,255,0.75);
+      font-size: 0.78rem; font-weight: 600; text-align: left;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all var(--transition);
+    }
+    .skill-nav-btn:hover { border-color: rgba(109,74,255,0.45); color: var(--white); background: rgba(109,74,255,0.1); }
+    .skill-nav-btn .arrow { font-size: 0.7rem; opacity: 0.6; }
+
+    /* ============================================================
+       MODALS
+    ============================================================ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(23,24,43,0.88); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: var(--navy-2); border: 1px solid rgba(109,74,255,0.3);
+      border-radius: 20px; padding: 36px 32px; max-width: 420px; width: 100%;
+      text-align: center; box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      transform: scale(0.96) translateY(8px); transition: transform var(--transition);
+    }
+    .modal-overlay.active .modal-box { transform: scale(1) translateY(0); }
+    .modal-icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .modal-box h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+    .modal-box p { font-size: 0.84rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 24px; }
+    .modal-actions { display: flex; gap: 10px; }
+    .modal-actions button { flex: 1; padding: 12px; border-radius: 9px; font-size: 0.88rem; font-weight: 700; border: none; }
+    .modal-cancel { background: rgba(37,39,71,0.8); color: rgba(255,255,255,0.7); border: 1.5px solid rgba(109,74,255,0.2) !important; }
+    .modal-confirm-green { background: linear-gradient(135deg, #22C55E, #16A34A); color: var(--white); }
+    .modal-confirm-purple { background: linear-gradient(135deg, var(--purple), var(--purple-light)); color: var(--white); }
+
+    /* ============================================================
+       MOBILE PANELS (drawer)
+    ============================================================ */
+    .mobile-overlay {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: rgba(23,24,43,0.7); backdrop-filter: blur(4px);
+    }
+    .mobile-overlay.active { display: block; }
+    .mobile-panel {
+      position: fixed; z-index: 310; top: var(--topbar-h); bottom: 0;
+      width: 280px; overflow-y: auto;
+      background: var(--navy-2); padding: 20px 16px;
+      transform: translateX(-100%); transition: transform 0.28s ease;
+      display: flex; flex-direction: column; gap: 18px;
+    }
+    .mobile-panel.right-panel { right: 0; left: auto; transform: translateX(100%); }
+    .mobile-panel.open { transform: translateX(0); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1100px) {
+      :root { --left-w: 220px; --right-w: 220px; }
+    }
+    @media (max-width: 860px) {
+      body { overflow: auto; }
+      .exam-layout {
+        display: block;
+        height: auto;
+        padding-top: var(--topbar-h);
+      }
+      .sidebar-left, .sidebar-right { display: none; }
+      .center-panel {
+        height: auto;
+        overflow-y: visible;
+        padding: 20px 16px 60px;
+      }
+      .topbar-btn-mobile { display: flex; align-items: center; gap: 5px; }
+      .mobile-panel { display: flex; }
+      .mobile-overlay { display: none; }
+      .mobile-overlay.active { display: block; }
+    }
+    @media (max-width: 560px) {
+      .center-panel { padding: 16px 12px 60px; }
+      .question-card { padding: 18px 16px; }
+      .topbar-progress-wrap { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOP BAR
+============================================================ -->
+<div class="topbar" id="topbar">
+  <a href="ielts-path-home.html" class="topbar-logo">
+    <div class="topbar-logo-icon">IP</div>
+    IELTS <span>Path</span>
+  </a>
+  <div class="topbar-badge">🎧 Listening Test</div>
+
+  <div class="topbar-center">
+    <div class="topbar-progress-wrap">
+      <div class="topbar-progress-bar">
+        <div class="topbar-progress-fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+      <div class="topbar-progress-label" id="topbar-progress-label">Answered: 0 / 40</div>
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <!-- Mobile buttons -->
+    <button class="topbar-btn-mobile" id="btn-open-left" onclick="openPanel('left')">🎧 Audio</button>
+    <button class="topbar-btn-mobile" id="btn-open-right" onclick="openPanel('right')">📊 Progress</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN EXAM LAYOUT
+============================================================ -->
+<div class="exam-layout">
+
+  <!-- ====== LEFT SIDEBAR ====== -->
+  <aside class="sidebar-left" id="sidebar-left">
+
+    <!-- Instructions -->
+    <div>
+      <div class="sidebar-label">📋 Test Instructions</div>
+      <div class="instr-card" style="margin-top:10px">
+        <div class="instr-title">🎧 IELTS Listening Test</div>
+        <div class="instr-meta">
+          <div class="instr-meta-row">📌 Total Questions: <strong>40</strong></div>
+          <div class="instr-meta-row">📁 Sections: <strong>4</strong></div>
+          <div class="instr-meta-row">⏱️ Duration: <strong>30 min</strong></div>
+        </div>
+        <div class="instr-rules">
+          Listen to the audio for each section, then answer the questions. You may answer as you listen. Do not turn over until told to do so. Write your answers in the spaces provided.
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio Player -->
+    <div>
+      <div class="sidebar-label">🔊 Audio Player</div>
+
+      <!-- Native audio element (hidden) -->
+      <audio id="native-audio" preload="none"></audio>
+
+      <div class="audio-player-card" style="margin-top:10px">
+        <div class="audio-section-name">
+          <div class="audio-dot" id="audio-dot" style="background:#5A5A78;animation:none"></div>
+          <span id="audio-section-name">Section 1 – Conversations</span>
+        </div>
+
+        <div class="audio-controls">
+          <button class="audio-play-btn" id="audio-play-btn" onclick="toggleAudio()" title="Play / Pause">
+            ▶
+          </button>
+          <div class="audio-progress-wrap" id="audio-progress-wrap" onclick="seekAudio(event)">
+            <div class="audio-progress-bg">
+              <div class="audio-progress-fill" id="audio-progress-fill" style="width:0%"></div>
+            </div>
+          </div>
+          <span class="audio-time" id="audio-time-display">0:00 / 0:00</span>
+        </div>
+
+        <div class="audio-volume-row">
+          <span class="audio-vol-icon">🔊</span>
+          <input type="range" class="audio-vol-slider" id="audio-vol-slider"
+            min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
+        </div>
+
+        <div class="audio-note">
+          ⚠️ Prototype: No audio files are configured. Connect audio files via the <code>AUDIO_TRACKS</code> config below.
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Navigation -->
+    <div>
+      <div class="sidebar-label">📍 Sections</div>
+      <div class="section-nav" id="section-nav" style="margin-top:10px"></div>
+    </div>
+
+  </aside>
+
+  <!-- ====== CENTER PANEL ====== -->
+  <main class="center-panel" id="center-panel">
+    <!-- Questions are rendered here by JS -->
+    <div id="questions-container"></div>
+
+    <div class="center-submit-area">
+      <button class="btn-skip" onclick="confirmSkip()">⏩ Skip to Reading</button>
+      <button class="btn-finish" onclick="confirmSubmit()">✅ Submit Listening</button>
+    </div>
+  </main>
+
+  <!-- ====== RIGHT SIDEBAR ====== -->
+  <aside class="sidebar-right" id="sidebar-right">
+
+    <!-- Timer -->
+    <div class="timer-card">
+      <div class="timer-label">⏱ Remaining Time</div>
+      <div class="timer-display" id="timer-display">30:00</div>
+      <div class="timer-sub" id="timer-sub">Listening Section</div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-card">
+      <div class="progress-card-label">📊 Answer Progress</div>
+      <div class="progress-stats">
+        <div class="progress-stat-row">
+          <span class="progress-stat-label">Answered</span>
+          <span class="progress-stat-val green" id="stat-answered">0 / 40</span>
+        </div>
+        <div class="progress-stat-row">
+          <span class="progress-stat-label">Unanswered</span>
+          <span class="progress-stat-val" id="stat-unanswered">40 / 40</span>
+        </div>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill-animated" id="progress-bar-fill" style="width:0%"></div>
+      </div>
+      <div class="progress-pct" id="progress-pct">0% complete</div>
+    </div>
+
+    <!-- Question Navigator -->
+    <div class="qnav-card">
+      <div class="qnav-label">🗂 Question Navigator</div>
+      <div id="qnav-container"></div>
+      <div class="qnav-legend">
+        <div class="qnav-legend-item"><div class="qnav-dot current"></div>Current</div>
+        <div class="qnav-legend-item"><div class="qnav-dot answered"></div>Answered</div>
+        <div class="qnav-legend-item"><div class="qnav-dot unanswered"></div>Unanswered</div>
+      </div>
+    </div>
+
+    <!-- Skill Navigation -->
+    <div class="skill-nav-card">
+      <div class="skill-nav-label">🚀 Continue To</div>
+      <div class="skill-nav-btns">
+        <button class="skill-nav-btn" onclick="navigateTo('reading')">
+          <span>📖 Reading Test</span>
+          <span class="arrow">→</span>
+        </button>
+        <button class="skill-nav-btn" onclick="navigateTo('writing')">
+          <span>✍️ Writing Test</span>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- Mobile Panels -->
+<div class="mobile-overlay" id="mobile-overlay" onclick="closePanel()"></div>
+
+<div class="mobile-panel" id="mobile-left-panel">
+  <!-- Same content as left sidebar — populated by JS -->
+  <div id="mobile-instr-clone"></div>
+  <div id="mobile-audio-clone"></div>
+  <div id="mobile-section-nav-clone"></div>
+</div>
+
+<div class="mobile-panel right-panel" id="mobile-right-panel">
+  <!-- Same content as right sidebar — populated by JS -->
+  <div id="mobile-timer-clone"></div>
+  <div id="mobile-progress-clone"></div>
+  <div id="mobile-qnav-clone"></div>
+</div>
+
+<!-- ============================================================
+     MODAL: Submit
+============================================================ -->
+<div class="modal-overlay" id="submit-modal">
+  <div class="modal-box">
+    <div class="modal-icon" id="submit-modal-icon">📋</div>
+    <h3 id="submit-modal-title">Submit Listening?</h3>
+    <p id="submit-modal-desc"></p>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('submit-modal')">Cancel</button>
+      <button class="modal-confirm-green" id="submit-modal-confirm" onclick="submitListening()">✅ Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODAL: Skip
+============================================================ -->
+<div class="modal-overlay" id="skip-modal">
+  <div class="modal-box">
+    <div class="modal-icon">⏩</div>
+    <h3>Skip Listening?</h3>
+    <p>Unanswered questions will be marked empty. You will proceed to Reading.</p>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('skip-modal')">Cancel</button>
+      <button class="modal-confirm-green" onclick="goToReading()">Skip Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODAL: Navigate to Skill
+============================================================ -->
+<div class="modal-overlay" id="nav-modal">
+  <div class="modal-box">
+    <div class="modal-icon">📚</div>
+    <h3 id="nav-modal-title">Continue to Reading?</h3>
+    <p id="nav-modal-desc">Your Listening answers will be saved. You can return to Listening later.</p>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('nav-modal')">Stay Here</button>
+      <button class="modal-confirm-purple" id="nav-modal-confirm">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// CONFIGURATION
+// ============================================================
+const CONFIG = (() => {
+  const p = new URLSearchParams(window.location.search);
+  return {
+    type:  p.get('type')  || 'academic',
+    level: p.get('level') || 'intermediate',
+    band:  p.get('band')  || '7.0',
+    TOTAL_TIME: 30 * 60  // 30 minutes in seconds
+  };
+})();
+
+// Audio track configuration — replace with real file paths if available.
+// Each section can have its own audio file.
+const AUDIO_TRACKS = [
+  { section: 1, src: '', label: 'Section 1 – Everyday Conversations' },
+  { section: 2, src: '', label: 'Section 2 – Monologue / Social Context' },
+  { section: 3, src: '', label: 'Section 3 – Academic Discussion' },
+  { section: 4, src: '', label: 'Section 4 – Academic Lecture' }
+];
+
+// Destination routes for skill navigation
+const SKILL_ROUTES = {
+  reading: 'ielts-test.html',   // existing reading/test page
+  writing: null                 // not yet available
+};
+
+// ============================================================
+// QUESTION DATA — 40 Questions across 4 Sections
+// ============================================================
+const SECTIONS = [
+  {
+    id: 'S1', label: 'Section 1', title: 'Everyday Conversation',
+    qRange: 'Questions 1–10', startQ: 1,
+    description: 'You will hear a conversation between two people in an everyday social context. Answer Questions 1–10.',
+    questions: [
+      { id:'L1',  num:1,  type:'multiple-choice',
+        context:'🎧 A student (Tom) is speaking with a library staff member about book borrowing.',
+        question:'How long can a standard student borrow a book?',
+        options:['1 week','2 weeks','3 weeks','1 month'], answer:1 },
+      { id:'L2',  num:2,  type:'multiple-choice',
+        context:'🎧 Continuation of Tom\'s conversation with the library staff.',
+        question:'What should Tom do to renew his loan?',
+        options:['Visit the library in person','Call the library','Use the website or app','Ask a friend to return it'], answer:2 },
+      { id:'L3',  num:3,  type:'short-answer',
+        context:'🎧 Tom asks about an overdue fine for a book returned late.',
+        question:'How much is the daily overdue fine per book?',
+        hint:'Write the amount in numbers, e.g. 0.20', answer:'0.20' },
+      { id:'L4',  num:4,  type:'multiple-choice',
+        context:'🎧 A student (Sarah) is listening to instructions from her teacher about an assignment.',
+        question:'What is the submission deadline for the final assignment?',
+        options:['Friday morning','Friday at 5:00 PM','Monday morning','Monday at 5:00 PM'], answer:1 },
+      { id:'L5',  num:5,  type:'multiple-choice',
+        context:'🎧 Continuation of the assignment instructions.',
+        question:'In what format should students submit their assignment?',
+        options:['Printed on A4 paper','Sent via email','Uploaded to the student portal','Handed directly to the teacher'], answer:2 },
+      { id:'L6',  num:6,  type:'short-answer',
+        context:'🎧 Two friends (Alice and Bob) are planning a trip together.',
+        question:'What city did Alice and Bob finally decide to visit?',
+        hint:'Write the city name in English', answer:'yogyakarta' },
+      { id:'L7',  num:7,  type:'multiple-choice',
+        context:'🎧 Continuation of Alice and Bob\'s conversation about accommodation.',
+        question:'What type of accommodation does Bob prefer?',
+        options:['Five-star hotel','Budget hostel','Local guesthouse','Airbnb'], answer:2 },
+      { id:'L8',  num:8,  type:'multiple-choice',
+        context:'🎧 A customer is calling an airline\'s customer service.',
+        question:'Why is the customer calling the airline?',
+        options:['To buy a new ticket','To change a flight schedule','To request a refund','To ask about baggage'], answer:1 },
+      { id:'L9',  num:9,  type:'multiple-choice',
+        context:'🎧 Continuation of the airline customer service call.',
+        question:'How much is the schedule change fee?',
+        options:['Free of charge','Rp 150,000','Rp 250,000','Depends on the route'], answer:3 },
+      { id:'L10', num:10, type:'multiple-choice',
+        context:'🎧 A short lecture on the importance of adequate sleep.',
+        question:'According to the lecture, how many hours of sleep are recommended for adults?',
+        options:['5–6 hours','6–7 hours','7–9 hours','9–10 hours'], answer:2 }
+    ]
+  },
+  {
+    id: 'S2', label: 'Section 2', title: 'Monologue / Social Situation',
+    qRange: 'Questions 11–20', startQ: 11,
+    description: 'You will hear a monologue in an everyday social context. Answer Questions 11–20.',
+    questions: [
+      { id:'L11', num:11, type:'multiple-choice',
+        context:'🎧 A tour guide is giving information to a group visiting a local museum.',
+        question:'How many floors does the museum have?',
+        options:['2','3','4','5'], answer:2 },
+      { id:'L12', num:12, type:'short-answer',
+        context:'🎧 Continuation of the museum tour guide\'s introduction.',
+        question:'At what time does the museum close on Sundays?',
+        hint:'Write the time, e.g. 5:00 PM', answer:'5:00 pm' },
+      { id:'L13', num:13, type:'multiple-choice',
+        context:'🎧 The guide explains the museum\'s facilities.',
+        question:'Where is the museum café located?',
+        options:['Ground floor near the entrance','Second floor near the gallery','Third floor with a rooftop view','Basement level'], answer:0 },
+      { id:'L14', num:14, type:'multiple-choice',
+        context:'🎧 A radio presenter is describing a local community event.',
+        question:'What is the main purpose of the community event?',
+        options:['Raising funds for a school','Celebrating a national holiday','Promoting local businesses','Recruiting volunteers'], answer:2 },
+      { id:'L15', num:15, type:'short-answer',
+        context:'🎧 The presenter gives details about the event location.',
+        question:'What is the name of the park where the event will be held?',
+        hint:'Write the full name', answer:'riverside park' },
+      { id:'L16', num:16, type:'multiple-choice',
+        context:'🎧 A manager is briefing new employees at an orientation.',
+        question:'What time does the morning shift begin?',
+        options:['7:00 AM','8:00 AM','8:30 AM','9:00 AM'], answer:1 },
+      { id:'L17', num:17, type:'multiple-choice',
+        context:'🎧 Continuation of the employee orientation.',
+        question:'Which department handles employee benefits?',
+        options:['Operations','Finance','Human Resources','Marketing'], answer:2 },
+      { id:'L18', num:18, type:'short-answer',
+        context:'🎧 A travel agent is explaining a holiday package to a customer.',
+        question:'How many nights does the standard holiday package include?',
+        hint:'Write a number', answer:'7' },
+      { id:'L19', num:19, type:'multiple-choice',
+        context:'🎧 Continuation of the travel agent\'s description.',
+        question:'Which meal is NOT included in the package?',
+        options:['Breakfast','Lunch','Dinner','Afternoon tea'], answer:2 },
+      { id:'L20', num:20, type:'multiple-choice',
+        context:'🎧 A local radio host is announcing changes to the bus service.',
+        question:'Which bus route has been permanently cancelled?',
+        options:['Route 12','Route 14','Route 18','Route 21'], answer:1 }
+    ]
+  },
+  {
+    id: 'S3', label: 'Section 3', title: 'Academic Discussion',
+    qRange: 'Questions 21–30', startQ: 21,
+    description: 'You will hear a discussion between up to four people set in an educational context. Answer Questions 21–30.',
+    questions: [
+      { id:'L21', num:21, type:'multiple-choice',
+        context:'🎧 Two university students (Mia and James) are discussing their research project on climate change.',
+        question:'What is the main focus of Mia and James\'s research project?',
+        options:['Effects of deforestation','Urban carbon emissions','Ocean temperature rise','Renewable energy sources'], answer:1 },
+      { id:'L22', num:22, type:'multiple-choice',
+        context:'🎧 Continuation of Mia and James\'s discussion.',
+        question:'Which data source do they agree is most reliable?',
+        options:['Government statistics','Peer-reviewed academic journals','News articles','Social media surveys'], answer:1 },
+      { id:'L23', num:23, type:'short-answer',
+        context:'🎧 A tutor joins the conversation and asks about their methodology.',
+        question:'What research method do Mia and James plan to use?',
+        hint:'One or two words', answer:'case study' },
+      { id:'L24', num:24, type:'multiple-choice',
+        context:'🎧 The tutor suggests an additional chapter for their report.',
+        question:'What does the tutor suggest they add to the report?',
+        options:['A literature review section','An executive summary','A glossary of technical terms','A list of interview transcripts'], answer:0 },
+      { id:'L25', num:25, type:'multiple-choice',
+        context:'🎧 Mia asks about the submission word count.',
+        question:'What is the minimum word count for the final report?',
+        options:['3,000 words','5,000 words','7,500 words','10,000 words'], answer:1 },
+      { id:'L26', num:26, type:'short-answer',
+        context:'🎧 The tutor explains feedback timeline.',
+        question:'How many days after submission will the tutor provide written feedback?',
+        hint:'Write a number', answer:'14' },
+      { id:'L27', num:27, type:'multiple-choice',
+        context:'🎧 Three students (Anna, Ben, Carlos) discuss a psychology experiment they observed.',
+        question:'What type of experiment were the students observing?',
+        options:['Memory recall test','Reaction time study','Behavioural conditioning','Cognitive mapping'], answer:0 },
+      { id:'L28', num:28, type:'multiple-choice',
+        context:'🎧 Continuation of the psychology discussion.',
+        question:'Who in the group believes the experiment had a design flaw?',
+        options:['Anna','Ben','Carlos','All three of them'], answer:1 },
+      { id:'L29', num:29, type:'short-answer',
+        context:'🎧 Ben explains his concern about the experiment.',
+        question:'What does Ben say was the main problem with the participant sample?',
+        hint:'Two or three words', answer:'too small' },
+      { id:'L30', num:30, type:'multiple-choice',
+        context:'🎧 The group agrees on an action for their next seminar.',
+        question:'What do the students decide to do for the next seminar?',
+        options:['Present a summary to the class','Write a critical analysis essay','Replicate the experiment themselves','Interview the original researcher'], answer:2 }
+    ]
+  },
+  {
+    id: 'S4', label: 'Section 4', title: 'Academic Lecture',
+    qRange: 'Questions 31–40', startQ: 31,
+    description: 'You will hear a monologue on an academic subject. Answer Questions 31–40.',
+    questions: [
+      { id:'L31', num:31, type:'multiple-choice',
+        context:'🎧 A university lecturer is giving a talk about the history of urban planning.',
+        question:'According to the lecturer, when did modern urban planning begin to emerge as a discipline?',
+        options:['Late 18th century','Early 19th century','Late 19th century','Mid-20th century'], answer:2 },
+      { id:'L32', num:32, type:'short-answer',
+        context:'🎧 The lecturer describes the concept of garden cities.',
+        question:'Who is credited with developing the garden city concept?',
+        hint:'Write the full name', answer:'ebenezer howard' },
+      { id:'L33', num:33, type:'multiple-choice',
+        context:'🎧 The lecture continues with post-war urban development.',
+        question:'What was the primary driver of suburban expansion after World War II?',
+        options:['High urban crime rates','Rise of the automobile','Government housing subsidies','Population decline in cities'], answer:1 },
+      { id:'L34', num:34, type:'multiple-choice',
+        context:'🎧 The lecturer discusses sustainable urban development.',
+        question:'Which of the following best describes a "smart city"?',
+        options:[
+          'A city powered entirely by renewable energy',
+          'A city that uses technology to improve services and quality of life',
+          'A city with no private vehicle usage',
+          'A city planned entirely by artificial intelligence'
+        ], answer:1 },
+      { id:'L35', num:35, type:'short-answer',
+        context:'🎧 The lecturer mentions a notable example of a planned capital city.',
+        question:'Which city is mentioned as an example of a purpose-built capital city?',
+        hint:'Write the city name', answer:'brasilia' },
+      { id:'L36', num:36, type:'multiple-choice',
+        context:'🎧 The lecturer discusses the impact of zoning laws.',
+        question:'What is the main criticism of strict zoning laws mentioned in the lecture?',
+        options:[
+          'They increase property taxes',
+          'They prevent mixed-use development and reduce walkability',
+          'They cause environmental damage',
+          'They slow down construction projects'
+        ], answer:1 },
+      { id:'L37', num:37, type:'multiple-choice',
+        context:'🎧 The lecture shifts to community participation in urban planning.',
+        question:'According to the lecturer, why is community participation important in planning decisions?',
+        options:[
+          'It reduces the cost of construction',
+          'It ensures plans meet the actual needs of residents',
+          'It speeds up the planning approval process',
+          'It eliminates the need for professional planners'
+        ], answer:1 },
+      { id:'L38', num:38, type:'short-answer',
+        context:'🎧 The lecturer mentions a specific planning challenge facing many cities today.',
+        question:'What term does the lecturer use to describe the rapid unplanned growth at city edges?',
+        hint:'One or two words', answer:'urban sprawl' },
+      { id:'L39', num:39, type:'multiple-choice',
+        context:'🎧 The lecturer outlines three key principles of sustainable urban design.',
+        question:'Which principle is NOT mentioned by the lecturer?',
+        options:[
+          'Walkability and mixed land use',
+          'Preservation of green spaces',
+          'Strict height limits on all buildings',
+          'Access to public transportation'
+        ], answer:2 },
+      { id:'L40', num:40, type:'multiple-choice',
+        context:'🎧 The lecturer concludes with a remark on the future of urban planning.',
+        question:'What does the lecturer say about the future role of planners?',
+        options:[
+          'Planners will become less relevant as AI takes over',
+          'Planners must collaborate more with communities and technologists',
+          'Planners should focus exclusively on environmental issues',
+          'Planning decisions should be left entirely to market forces'
+        ], answer:1 }
+    ]
+  }
+];
+
+// Flatten for easy access
+const ALL_QUESTIONS = SECTIONS.flatMap(s => s.questions);
+
+// ============================================================
+// STATE
+// ============================================================
+let answers = {};          // { qId: value }
+let currentQId = 'L1';    // currently "active" question (for navigator highlight)
+let timeLeft = CONFIG.TOTAL_TIME;
+let timerInterval = null;
+let activeSectionIdx = 0;  // 0–3
+let audioPlaying = false;
+
+// ============================================================
+// AUDIO STATE
+// ============================================================
+const audioEl = document.getElementById('native-audio');
+
+function getActiveTrack() {
+  return AUDIO_TRACKS[activeSectionIdx];
+}
+
+function loadAudioTrack(sectionIdx) {
+  const track = AUDIO_TRACKS[sectionIdx];
+  if (track.src) {
+    audioEl.src = track.src;
+    audioEl.load();
+  } else {
+    audioEl.removeAttribute('src');
+  }
+  document.getElementById('audio-section-name').textContent = track.label;
+  const dot = document.getElementById('audio-dot');
+  if (track.src) {
+    dot.style.background = '#22C55E';
+    dot.style.animation = '';
+  } else {
+    dot.style.background = '#5A5A78';
+    dot.style.animation = 'none';
+  }
+  updatePlayBtn(false);
+  audioPlaying = false;
+  document.getElementById('audio-progress-fill').style.width = '0%';
+  document.getElementById('audio-time-display').textContent = '0:00 / 0:00';
+}
+
+function toggleAudio() {
+  const track = getActiveTrack();
+  if (!track.src) {
+    // No audio configured — just show UI feedback
+    const btn = document.getElementById('audio-play-btn');
+    btn.textContent = '⚠️';
+    setTimeout(() => { btn.textContent = audioPlaying ? '⏸' : '▶'; }, 1200);
+    return;
+  }
+  if (audioEl.paused) {
+    audioEl.play().catch(() => {});
+  } else {
+    audioEl.pause();
+  }
+}
+
+function updatePlayBtn(isPlaying) {
+  const btn = document.getElementById('audio-play-btn');
+  btn.textContent = isPlaying ? '⏸' : '▶';
+  audioPlaying = isPlaying;
+}
+
+audioEl.addEventListener('play',  () => updatePlayBtn(true));
+audioEl.addEventListener('pause', () => updatePlayBtn(false));
+audioEl.addEventListener('ended', () => updatePlayBtn(false));
+audioEl.addEventListener('timeupdate', () => {
+  if (!audioEl.duration) return;
+  const pct = (audioEl.currentTime / audioEl.duration) * 100;
+  document.getElementById('audio-progress-fill').style.width = `${pct}%`;
+  document.getElementById('audio-time-display').textContent =
+    `${formatTime(audioEl.currentTime)} / ${formatTime(audioEl.duration)}`;
+});
+
+function seekAudio(e) {
+  if (!audioEl.src || !audioEl.duration) return;
+  const wrap = document.getElementById('audio-progress-wrap');
+  const rect = wrap.getBoundingClientRect();
+  const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  audioEl.currentTime = ratio * audioEl.duration;
+}
+
+function setVolume(val) {
+  audioEl.volume = parseFloat(val);
+  const slider = document.getElementById('audio-vol-slider');
+  slider.style.background = `linear-gradient(to right, var(--purple) ${val*100}%, rgba(255,255,255,0.15) ${val*100}%)`;
+}
+
+function playSectionAudio(sectionIdx) {
+  if (sectionIdx !== activeSectionIdx) {
+    activeSectionIdx = sectionIdx;
+    loadAudioTrack(sectionIdx);
+    renderSectionNavHighlight();
+  }
+  const track = AUDIO_TRACKS[sectionIdx];
+  if (track.src) {
+    audioEl.currentTime = 0;
+    audioEl.play().catch(() => {});
+  }
+  // Update play buttons in section nav
+  document.querySelectorAll('.section-play-btn').forEach((btn, i) => {
+    btn.classList.toggle('playing', i === sectionIdx && !!track.src);
+    btn.textContent = (i === sectionIdx && track.src && !audioEl.paused) ? '⏸' : '▶';
+  });
+}
+
+function formatTime(secs) {
+  const m = Math.floor(secs / 60);
+  const s = Math.floor(secs % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+
+// ============================================================
+// RENDER — Questions
+// ============================================================
+function renderAllQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+
+  SECTIONS.forEach((sec, si) => {
+    // Section group header
+    const groupEl = document.createElement('div');
+    groupEl.className = 'section-group';
+    groupEl.id = `section-group-${sec.id}`;
+
+    const headerEl = document.createElement('div');
+    headerEl.className = 'section-group-header';
+    headerEl.innerHTML = `
+      <div>
+        <div class="section-group-badge">${sec.label}</div>
+      </div>
+      <div>
+        <div class="section-group-title">${sec.title}</div>
+        <div class="section-group-sub">${sec.qRange} &nbsp;·&nbsp; ${sec.description}</div>
+      </div>
+    `;
+    groupEl.appendChild(headerEl);
+
+    // Questions for this section
+    sec.questions.forEach(q => {
+      const card = buildQuestionCard(q);
+      groupEl.appendChild(card);
+    });
+
+    container.appendChild(groupEl);
+
+    // Section divider (except after last section)
+    if (si < SECTIONS.length - 1) {
+      const divider = document.createElement('div');
+      divider.className = 'section-group-divider';
+      container.appendChild(divider);
+    }
+  });
+}
+
+function buildQuestionCard(q) {
+  const card = document.createElement('div');
+  card.className = 'question-card';
+  card.id = `q-card-${q.id}`;
+  card.dataset.qid = q.id;
+
+  const isAnswered = answers[q.id] !== undefined;
+  if (isAnswered) card.classList.add('answered');
+  if (q.id === currentQId) card.classList.add('current');
+
+  const typeLabel = {
+    'multiple-choice': 'Multiple Choice',
+    'short-answer': 'Short Answer',
+    'form-completion': 'Form Completion',
+    'note-completion': 'Note Completion',
+    'sentence-completion': 'Sentence Completion',
+    'matching': 'Matching'
+  }[q.type] || q.type;
+
+  card.innerHTML = `
+    <div class="q-header">
+      <div class="q-num-badge">${q.num}</div>
+      <span class="q-type-tag">${typeLabel}</span>
+      <span class="q-answered-indicator">✓ Answered</span>
+    </div>
+    ${q.context ? `<div class="q-context">${q.context}</div>` : ''}
+    <div class="q-text">${q.question}</div>
+    <div class="q-input-area" id="q-input-${q.id}"></div>
+  `;
+
+  // Render input
+  const inputArea = card.querySelector(`#q-input-${q.id}`);
+  renderQuestionInput(q, inputArea);
+
+  // Set up IntersectionObserver to track active question while scrolling
+  return card;
+}
+
+function renderQuestionInput(q, container) {
+  const saved = answers[q.id];
+
+  if (q.type === 'multiple-choice' || q.type === 'true-false-ng') {
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    q.options.forEach((opt, i) => {
+      const letter = ['A','B','C','D','E'][i] || String(i+1);
+      const isSelected = saved === i;
+      const label = document.createElement('label');
+      label.className = `opt-item${isSelected ? ' selected' : ''}`;
+      label.innerHTML = `
+        <input type="radio" name="q_${q.id}" value="${i}" ${isSelected ? 'checked' : ''}>
+        <div class="opt-letter">${letter}</div>
+        <span class="opt-label">${opt}</span>
+      `;
+      label.addEventListener('click', () => {
+        selectMC(q.id, i, label, optDiv);
+      });
+      optDiv.appendChild(label);
+    });
+    container.appendChild(optDiv);
+
+  } else if (q.type === 'short-answer') {
+    const wrap = document.createElement('div');
+    wrap.className = 'short-answer-wrap';
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.className = 'short-answer-input';
+    inp.placeholder = 'Write your answer here…';
+    inp.value = saved || '';
+    inp.autocomplete = 'off';
+    inp.addEventListener('input', () => saveShortAnswer(q.id, inp.value));
+    inp.addEventListener('focus', () => setCurrentQ(q.id));
+    wrap.appendChild(inp);
+    if (q.hint) {
+      const hint = document.createElement('div');
+      hint.className = 'short-answer-hint';
+      hint.textContent = `💡 Hint: ${q.hint}`;
+      wrap.appendChild(hint);
+    }
+    container.appendChild(wrap);
+
+  } else if (q.type === 'form-completion' || q.type === 'note-completion' || q.type === 'sentence-completion') {
+    const wrap = document.createElement('div');
+    wrap.className = 'completion-wrap';
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.className = 'completion-input';
+    inp.placeholder = '…';
+    inp.value = saved || '';
+    inp.autocomplete = 'off';
+    inp.addEventListener('input', () => saveShortAnswer(q.id, inp.value));
+    inp.addEventListener('focus', () => setCurrentQ(q.id));
+    wrap.appendChild(inp);
+    container.appendChild(wrap);
+    if (q.hint) {
+      const hint = document.createElement('div');
+      hint.className = 'short-answer-hint';
+      hint.textContent = `💡 ${q.hint}`;
+      container.appendChild(hint);
+    }
+
+  } else if (q.type === 'matching') {
+    const sel = document.createElement('select');
+    sel.className = 'matching-select';
+    const emptyOpt = document.createElement('option');
+    emptyOpt.value = '';
+    emptyOpt.textContent = '— Select —';
+    sel.appendChild(emptyOpt);
+    (q.options || []).forEach((opt, i) => {
+      const o = document.createElement('option');
+      o.value = i;
+      o.textContent = opt;
+      if (saved === i) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', () => {
+      const v = sel.value === '' ? undefined : parseInt(sel.value);
+      if (v !== undefined) {
+        answers[q.id] = v;
+      } else {
+        delete answers[q.id];
+      }
+      refreshQuestionCard(q.id);
+      updateProgress();
+    });
+    sel.addEventListener('focus', () => setCurrentQ(q.id));
+    container.appendChild(sel);
+  }
+}
+
+// ============================================================
+// ANSWER HANDLING
+// ============================================================
+function selectMC(qId, idx, clickedLabel, optDiv) {
+  answers[qId] = idx;
+  // Update selected style without re-render
+  optDiv.querySelectorAll('.opt-item').forEach(el => el.classList.remove('selected'));
+  clickedLabel.classList.add('selected');
+  // Update radio
+  const radio = clickedLabel.querySelector('input[type="radio"]');
+  if (radio) radio.checked = true;
+
+  setCurrentQ(qId);
+  refreshQuestionCard(qId, false);
+  updateProgress();
+}
+
+function saveShortAnswer(qId, val) {
+  if (val.trim()) {
+    answers[qId] = val.trim().toLowerCase();
+  } else {
+    delete answers[qId];
+  }
+  refreshQuestionCard(qId, false);
+  updateProgress();
+}
+
+// Update only the card's answered state without full re-render
+function refreshQuestionCard(qId, rebuildInput = false) {
+  const card = document.getElementById(`q-card-${qId}`);
+  if (!card) return;
+  const isAnswered = answers[qId] !== undefined;
+  card.classList.toggle('answered', isAnswered);
+
+  if (rebuildInput) {
+    const q = ALL_QUESTIONS.find(x => x.id === qId);
+    const inputArea = card.querySelector(`#q-input-${qId}`);
+    if (q && inputArea) {
+      inputArea.innerHTML = '';
+      renderQuestionInput(q, inputArea);
+    }
+  }
+}
+
+// ============================================================
+// CURRENT QUESTION TRACKING
+// ============================================================
+function setCurrentQ(qId) {
+  if (currentQId === qId) return;
+  // Remove 'current' from old card
+  const oldCard = document.getElementById(`q-card-${currentQId}`);
+  if (oldCard) oldCard.classList.remove('current');
+  currentQId = qId;
+  // Add 'current' to new card
+  const newCard = document.getElementById(`q-card-${qId}`);
+  if (newCard) newCard.classList.add('current');
+  updateQuestionNavigator();
+}
+
+// ============================================================
+// SCROLL TO QUESTION
+// ============================================================
+function scrollToQuestion(qId) {
+  const card = document.getElementById(`q-card-${qId}`);
+  if (!card) return;
+  const panel = document.getElementById('center-panel');
+  if (panel) {
+    // Use scrollIntoView with offset for sticky header
+    const cardTop = card.offsetTop;
+    const offset = 60; // sticky header height
+    panel.scrollTo({ top: cardTop - offset, behavior: 'smooth' });
+  }
+  setCurrentQ(qId);
+  closePanel(); // close mobile panels if open
+}
+
+function scrollToSection(sectionIdx) {
+  const sec = SECTIONS[sectionIdx];
+  const groupEl = document.getElementById(`section-group-${sec.id}`);
+  if (!groupEl) return;
+  const panel = document.getElementById('center-panel');
+  if (panel) {
+    panel.scrollTo({ top: groupEl.offsetTop - 10, behavior: 'smooth' });
+  }
+  activeSectionIdx = sectionIdx;
+  loadAudioTrack(sectionIdx);
+  renderSectionNavHighlight();
+  closePanel();
+}
+
+// ============================================================
+// SECTION NAVIGATION — LEFT SIDEBAR
+// ============================================================
+function renderSectionNav() {
+  const navContainer = document.getElementById('section-nav');
+  navContainer.innerHTML = '';
+
+  SECTIONS.forEach((sec, si) => {
+    const item = document.createElement('div');
+    item.className = 'section-nav-item';
+    item.id = `section-nav-${si}`;
+
+    const answeredInSection = sec.questions.filter(q => answers[q.id] !== undefined).length;
+    const totalInSection = sec.questions.length;
+    const pct = Math.round((answeredInSection / totalInSection) * 100);
+
+    if (si === activeSectionIdx) item.classList.add('active');
+    if (answeredInSection === totalInSection) item.classList.add('completed');
+
+    item.innerHTML = `
+      <div class="section-nav-header" onclick="scrollToSection(${si})">
+        <div class="section-nav-icon">${si + 1}</div>
+        <div class="section-nav-info">
+          <div class="section-nav-name">${sec.label}</div>
+          <div class="section-nav-range">${sec.qRange} · ${answeredInSection}/${totalInSection} answered</div>
+        </div>
+        <button class="section-play-btn" id="section-play-${si}"
+          onclick="event.stopPropagation(); playSectionAudio(${si})" title="Play Section ${si+1} Audio">▶</button>
+      </div>
+      <div class="section-nav-progress">
+        <div class="section-nav-progress-fill" style="width:${pct}%"></div>
+      </div>
+    `;
+    navContainer.appendChild(item);
+  });
+}
+
+function renderSectionNavHighlight() {
+  SECTIONS.forEach((_, si) => {
+    const item = document.getElementById(`section-nav-${si}`);
+    if (!item) return;
+    item.classList.toggle('active', si === activeSectionIdx);
+  });
+}
+
+// ============================================================
+// QUESTION NAVIGATOR — RIGHT SIDEBAR
+// ============================================================
+function renderQuestionNavigator() {
+  const container = document.getElementById('qnav-container');
+  container.innerHTML = '';
+
+  SECTIONS.forEach((sec, si) => {
+    const sLabel = document.createElement('div');
+    sLabel.className = 'qnav-section-label';
+    sLabel.textContent = sec.label;
+    container.appendChild(sLabel);
+
+    const grid = document.createElement('div');
+    grid.className = 'qnav-grid';
+
+    sec.questions.forEach(q => {
+      const btn = document.createElement('button');
+      btn.className = 'qnav-btn';
+      btn.id = `qnav-btn-${q.id}`;
+      btn.textContent = q.num;
+      if (q.id === currentQId) btn.classList.add('current');
+      if (answers[q.id] !== undefined) btn.classList.add('answered');
+      btn.addEventListener('click', () => scrollToQuestion(q.id));
+      grid.appendChild(btn);
+    });
+
+    container.appendChild(grid);
+  });
+}
+
+function updateQuestionNavigator() {
+  ALL_QUESTIONS.forEach(q => {
+    const btn = document.getElementById(`qnav-btn-${q.id}`);
+    if (!btn) return;
+    btn.classList.toggle('current', q.id === currentQId);
+    btn.classList.toggle('answered', answers[q.id] !== undefined);
+  });
+}
+
+// ============================================================
+// PROGRESS
+// ============================================================
+function updateProgress() {
+  const total = ALL_QUESTIONS.length;
+  const answered = ALL_QUESTIONS.filter(q => answers[q.id] !== undefined).length;
+  const unanswered = total - answered;
+  const pct = Math.round((answered / total) * 100);
+
+  document.getElementById('stat-answered').textContent = `${answered} / ${total}`;
+  document.getElementById('stat-unanswered').textContent = `${unanswered} / ${total}`;
+  document.getElementById('progress-bar-fill').style.width = `${pct}%`;
+  document.getElementById('progress-pct').textContent = `${pct}% complete`;
+  document.getElementById('topbar-progress-fill').style.width = `${pct}%`;
+  document.getElementById('topbar-progress-label').textContent = `Answered: ${answered} / ${total}`;
+
+  // Update section nav progress bars
+  SECTIONS.forEach((sec, si) => {
+    const answeredInSec = sec.questions.filter(q => answers[q.id] !== undefined).length;
+    const pctSec = Math.round((answeredInSec / sec.questions.length) * 100);
+    const navItem = document.getElementById(`section-nav-${si}`);
+    if (navItem) {
+      const fill = navItem.querySelector('.section-nav-progress-fill');
+      if (fill) fill.style.width = `${pctSec}%`;
+      const range = navItem.querySelector('.section-nav-range');
+      if (range) range.textContent = `${sec.qRange} · ${answeredInSec}/${sec.questions.length} answered`;
+      navItem.classList.toggle('completed', answeredInSec === sec.questions.length);
+    }
+  });
+
+  updateQuestionNavigator();
+}
+
+// ============================================================
+// TIMER
+// ============================================================
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    renderTimer();
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      onTimerExpired();
+    }
+  }, 1000);
+}
+
+function renderTimer() {
+  const min = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+  const sec = (timeLeft % 60).toString().padStart(2, '0');
+  const el = document.getElementById('timer-display');
+  el.textContent = `${min}:${sec}`;
+  el.className = 'timer-display';
+  if (timeLeft <= 300 && timeLeft > 60) el.classList.add('warning');
+  if (timeLeft <= 60) el.classList.add('danger');
+}
+
+function onTimerExpired() {
+  alert('Time is up! Submitting Listening answers…');
+  submitListening();
+}
+
+// ============================================================
+// SUBMIT & NAVIGATION
+// ============================================================
+function confirmSubmit() {
+  const total = ALL_QUESTIONS.length;
+  const answered = ALL_QUESTIONS.filter(q => answers[q.id] !== undefined).length;
+  document.getElementById('submit-modal-title').textContent = 'Submit Listening Test?';
+  document.getElementById('submit-modal-desc').innerHTML =
+    `You have answered <strong>${answered}</strong> out of <strong>${total}</strong> questions.<br>Unanswered questions will be marked empty.`;
+  document.getElementById('submit-modal-confirm').onclick = submitListening;
+  document.getElementById('submit-modal').classList.add('active');
+}
+
+function confirmSkip() {
+  document.getElementById('skip-modal').classList.add('active');
+}
+
+function submitListening() {
+  clearInterval(timerInterval);
+  closeModal('submit-modal');
+
+  // Score calculation
+  let score = 0;
+  ALL_QUESTIONS.forEach(q => {
+    const ans = answers[q.id];
+    if (q.type === 'short-answer' || q.type === 'form-completion' || q.type === 'note-completion' || q.type === 'sentence-completion') {
+      if (ans && q.answer && ans.toLowerCase().includes(q.answer.toString().toLowerCase())) score++;
+    } else {
+      if (ans === q.answer) score++;
+    }
+  });
+
+  // Pass to result page — compatible with ielts-result.html format
+  const resultData = {
+    listeningScore: score,
+    readingScore: 0,
+    listeningTotal: ALL_QUESTIONS.length,
+    readingTotal: 0,
+    targetBand: CONFIG.band,
+    ieltsType: CONFIG.type,
+    level: CONFIG.level,
+    listeningAnswers: JSON.stringify(answers),
+    readingAnswers: JSON.stringify({})
+  };
+  const p = new URLSearchParams(resultData);
+  window.location.href = `ielts-result.html?${p.toString()}`;
+}
+
+function goToReading() {
+  closeModal('skip-modal');
+  clearInterval(timerInterval);
+  // Go to existing ielts-test.html with reading section
+  const p = new URLSearchParams({ type: CONFIG.type, level: CONFIG.level, band: CONFIG.band, section: 'reading' });
+  window.location.href = `ielts-test.html?${p.toString()}`;
+}
+
+function navigateTo(skill) {
+  const route = SKILL_ROUTES[skill];
+  const modal = document.getElementById('nav-modal');
+  document.getElementById('nav-modal-title').textContent =
+    skill === 'reading' ? 'Continue to Reading?' : 'Continue to Writing?';
+  document.getElementById('nav-modal-desc').textContent =
+    route
+      ? 'Your Listening answers have been saved for this session.'
+      : `The ${skill.charAt(0).toUpperCase() + skill.slice(1)} Test is not yet available.`;
+
+  const confirmBtn = document.getElementById('nav-modal-confirm');
+  if (route) {
+    confirmBtn.textContent = 'Continue →';
+    confirmBtn.onclick = () => {
+      closeModal('nav-modal');
+      const p = new URLSearchParams({ type: CONFIG.type, level: CONFIG.level, band: CONFIG.band });
+      window.location.href = `${route}?${p.toString()}`;
+    };
+  } else {
+    confirmBtn.textContent = 'OK';
+    confirmBtn.onclick = () => closeModal('nav-modal');
+    document.getElementById('nav-modal-desc').textContent =
+      `The ${skill.charAt(0).toUpperCase() + skill.slice(1)} Test page is not yet available. Complete Listening first, then check back.`;
+  }
+  modal.classList.add('active');
+}
+
+// ============================================================
+// MODAL UTILITIES
+// ============================================================
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.classList.remove('active');
+  });
+});
+
+// ============================================================
+// MOBILE PANEL
+// ============================================================
+function openPanel(side) {
+  const leftPanel = document.getElementById('mobile-left-panel');
+  const rightPanel = document.getElementById('mobile-right-panel');
+  const overlay = document.getElementById('mobile-overlay');
+
+  if (side === 'left') {
+    // Clone left sidebar content
+    const leftContent = document.getElementById('sidebar-left').innerHTML;
+    leftPanel.innerHTML = leftContent;
+    // Re-bind section nav click events
+    leftPanel.querySelectorAll('[onclick]').forEach(el => {
+      // onclick attributes are re-evaluated automatically
+    });
+    leftPanel.classList.add('open');
+  } else {
+    const rightContent = document.getElementById('sidebar-right').innerHTML;
+    rightPanel.innerHTML = rightContent;
+    rightPanel.classList.add('open');
+  }
+  overlay.classList.add('active');
+}
+
+function closePanel() {
+  document.getElementById('mobile-left-panel').classList.remove('open');
+  document.getElementById('mobile-right-panel').classList.remove('open');
+  document.getElementById('mobile-overlay').classList.remove('active');
+}
+
+// ============================================================
+// SCROLL OBSERVER — track active section while scrolling
+// ============================================================
+function setupScrollObserver() {
+  const panel = document.getElementById('center-panel');
+  if (!panel) return;
+
+  const sectionEls = SECTIONS.map(sec => document.getElementById(`section-group-${sec.id}`));
+
+  panel.addEventListener('scroll', () => {
+    const scrollTop = panel.scrollTop;
+    let found = 0;
+    sectionEls.forEach((el, i) => {
+      if (el && el.offsetTop - 80 <= scrollTop) found = i;
+    });
+    if (found !== activeSectionIdx) {
+      activeSectionIdx = found;
+      renderSectionNavHighlight();
+    }
+  }, { passive: true });
+}
+
+// ============================================================
+// INTERSECTION OBSERVER — update current question on scroll
+// ============================================================
+function setupQuestionObserver() {
+  const panel = document.getElementById('center-panel');
+  if (!panel || !window.IntersectionObserver) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const qid = entry.target.dataset.qid;
+        if (qid && qid !== currentQId) {
+          setCurrentQ(qid);
+        }
+      }
+    });
+  }, { root: panel, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+  document.querySelectorAll('.question-card').forEach(card => {
+    observer.observe(card);
+  });
+}
+
+// ============================================================
+// INIT
+// ============================================================
+function init() {
+  renderAllQuestions();
+  renderSectionNav();
+  renderQuestionNavigator();
+  updateProgress();
+  loadAudioTrack(0);
+  startTimer();
+  setupScrollObserver();
+
+  // Defer observer to allow DOM to settle
+  requestAnimationFrame(() => {
+    setupQuestionObserver();
+  });
+}
+
+init();
+</script>
+</body>
+</html>
